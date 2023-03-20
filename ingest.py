@@ -5,7 +5,7 @@ import os
 import re
 import string
 
-openai.api_key = "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"
+openai.api_key = "your api key"
 
 messages = [{"role": "system", 
              "content": """
