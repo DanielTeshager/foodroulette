@@ -1,0 +1,7 @@
+/restaurants/
+/all_menus/
+/.ipynb_checkpoints/
+geckodriver.log
+embede.csv
+menu_items.csv
+restaurants.csv
