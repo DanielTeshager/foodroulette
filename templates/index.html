@@ -2,62 +2,105 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
 		<title>Food Spinner</title>
-		<!-- stop from being cached  -->
 		<meta
 			http-equiv="Cache-Control"
-			content="no-cache, no-store, must-revalidate,width=device-width, initial-scale=1.0"
+			content="no-cache, no-store, must-revalidate, width=device-width, initial-scale=1.0"
 		/>
 		<link
 			rel="stylesheet"
 			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 		/>
-		<!-- include Popper.js -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
-		<!-- include Bootstrap JavaScript -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="/static/styles.css" />
+		<style>
+			html,
+			body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+
+			.main-container {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				height: 100%;
+			}
+		</style>
 	</head>
 	<body>
-		<div class="container">
-			<h1 class="text-center">Food Roulette</h1>
-
-			<!-- Restaurant picker dropdown box -->
-			<div class="dropdown" id="restaurant-picker">
-				<button
-					class="btn btn-primary dropdown-toggle"
-					type="button"
-					data-toggle="dropdown"
-				>
-					Select Restaurant
-					<span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu" id="restaurant-dropdown">
-					{% for restaurant in restaurants %}
-					<li><a href="#">{{ restaurant }}</a></li>
-					{% endfor %}
-				</ul>
+		<div class="modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2></h2>
+					<span class="close">&times;</span>
+				</div>
+				<div class="modal-body">
+					<p class="classification"></p>
+					<ul class="nutrition-list list-group"></ul>
+				</div>
+				<div class="modal-footer">
+					<!-- footer title -->
+					<div class="modal-footer-title">
+						<h6 class="footer-title-text"></h6>
+					</div>
+					<!-- footer title -->
+					<div class="modal-footer-content"></div>
+				</div>
 			</div>
+		</div>
+
+		<div class="loading-spinner"></div>
+
+		<div class="container main-container">
+			<h1 class="text-center">Food Roulette 🎰🍔</h1>
 
 			<div class="wheel-container text-center">
 				<img src="/static/wheel.png" class="wheel" id="wheel" />
 			</div>
 			<div class="text-center">
-				<button class="btn btn-primary" id="spin-button">Spin</button>
+				<button class="btn btn-primary heartbeat" id="spin-button">
+					Spin your menu mixer
+				</button>
 			</div>
-			<div id="result" class="mt-4">
-				<h3>Result:</h3>
-				<p id="food-name"></p>
-				<p id="description"></p>
-				<p id="price"></p>
-				<p id="restaurant-name"></p>
+			<div class="d-flex justify-content-center mt-4">
+				<div class="card text-center" id="result-card">
+					<div class="card-header">
+						<h3>Your Meal 👇🏾</h3>
+					</div>
+					<div class="card-body">
+						<h5 class="card-title" id="food-name">
+							<span class="food_name_span badge badge-success"></span>
+						</h5>
+						<p class="card-text" id="description">
+							<span class="description_span"></span>
+						</p>
+						<p class="card-text" id="price">
+							<span class="price_span"></span>
+						</p>
+						<p class="card-text" id="restaurant-name">
+							<span class="restaurant_name_span"></span>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
+
+		<footer class="bg-dark text-white text-center py-2">
+			<!-- user cdn to show twitter icon -->
+
+			<p>
+				Made with ❤️ by
+				<a href="https://twitter.com/danteshager" target="_blank">
+					@danteshager
+				</a>
+				& Powered by 🤖 GPT3.5
+			</p>
+		</footer>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<script src="/static/scripts.js"></script>
 	</body>
 </html>
